@@ -1,11 +1,19 @@
 'use strict';
 
 require('dotenv').config();
-const PORT = process.env.PORT;
-const express = require('express');
-const app = express();
 
-app.listen(PORT, () => {
-    console.log(`Listening on ${PORT}`);
+const HOST = process.env.HOST;
+const PORT = process.env.PORT;
+
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello World');
+});
+
+server.listen(PORT, () => {
+    console.log(`Server running at http://${HOST}:${PORT}/`);
 });
 
