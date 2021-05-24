@@ -19,9 +19,9 @@ const mimeTypes = {
     "css":"text/css",
 }
 
-let server = http.createServer((req, res) => {
+http.createServer((req, res) => {
     let uri = url.parse(req.url).pathname;
-    let fileName = path.join(process.cwd());
+    let fileName = path.join(process.cwd(), unescape(uri));
     console.log(`Loading ${uri}`);
 
     let stats;
